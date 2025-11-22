@@ -1,0 +1,1178 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Edward (Teddy) Jones | Quantum Scientist & Developer</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary: #6366f1;
+            --secondary: #8b5cf6;
+            --accent: #ec4899;
+            --quantum: #22d3ee;
+            --dark: #0f172a;
+            --darker: #020617;
+            --light: #f8fafc;
+            --gray: #64748b;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: var(--darker);
+            color: var(--light);
+            overflow-x: hidden;
+        }
+
+        /* Enhanced Animated Background */
+        .bg-animation {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            background: linear-gradient(135deg, var(--darker) 0%, var(--dark) 100%);
+        }
+
+        /* Canvas for quantum effects */
+        #quantumCanvas {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 0;
+            pointer-events: none;
+        }
+
+        /* Wave interference effect */
+        .wave-container {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            overflow: hidden;
+        }
+
+        .wave {
+            position: absolute;
+            width: 200%;
+            height: 200%;
+            border-radius: 40%;
+            opacity: 0.03;
+            animation: wave-pulse 15s ease-in-out infinite;
+        }
+
+        .wave:nth-child(1) {
+            background: radial-gradient(circle, var(--primary), transparent 70%);
+            animation-delay: 0s;
+            top: -50%;
+            left: -50%;
+        }
+
+        .wave:nth-child(2) {
+            background: radial-gradient(circle, var(--quantum), transparent 70%);
+            animation-delay: 5s;
+            top: -50%;
+            right: -50%;
+        }
+
+        .wave:nth-child(3) {
+            background: radial-gradient(circle, var(--accent), transparent 70%);
+            animation-delay: 10s;
+            bottom: -50%;
+            left: 0;
+        }
+
+        @keyframes wave-pulse {
+            0%, 100% { 
+                transform: scale(1) rotate(0deg);
+                opacity: 0.03;
+            }
+            50% { 
+                transform: scale(1.2) rotate(180deg);
+                opacity: 0.06;
+            }
+        }
+
+        /* Navigation */
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            padding: 1.5rem 5%;
+            background: rgba(15, 23, 42, 0.8);
+            backdrop-filter: blur(10px);
+            z-index: 1000;
+            border-bottom: 1px solid rgba(99, 102, 241, 0.1);
+            transition: all 0.3s;
+        }
+
+        nav.scrolled {
+            background: rgba(15, 23, 42, 0.95);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+        }
+
+        .nav-content {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 700;
+            background: linear-gradient(135deg, var(--primary), var(--accent));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            position: relative;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: var(--light);
+            text-decoration: none;
+            transition: all 0.3s;
+            font-weight: 500;
+            position: relative;
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: linear-gradient(90deg, var(--primary), var(--quantum));
+            transition: width 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: var(--primary);
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        /* Hero Section */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 0 5%;
+            position: relative;
+            z-index: 1;
+        }
+
+        .hero-content {
+            max-width: 1400px;
+            width: 100%;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+        }
+
+        .hero-text h1 {
+            font-size: 4rem;
+            margin-bottom: 1rem;
+            background: linear-gradient(135deg, var(--primary), var(--quantum), var(--accent));
+            background-size: 200% 200%;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            animation: fadeInUp 1s, gradient-shift 8s ease infinite;
+            position: relative;
+        }
+
+        @keyframes gradient-shift {
+            0%, 100% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+        }
+
+        .hero-text h2 {
+            font-size: 1.5rem;
+            color: var(--gray);
+            margin-bottom: 2rem;
+            animation: fadeInUp 1s 0.2s backwards;
+        }
+
+        .hero-text p {
+            font-size: 1.1rem;
+            line-height: 1.8;
+            color: var(--gray);
+            margin-bottom: 2rem;
+            animation: fadeInUp 1s 0.4s backwards;
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 1rem;
+            animation: fadeInUp 1s 0.6s backwards;
+        }
+
+        .btn {
+            padding: 1rem 2rem;
+            border: none;
+            border-radius: 8px;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+            text-decoration: none;
+            display: inline-block;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .btn::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 0;
+            height: 0;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.2);
+            transform: translate(-50%, -50%);
+            transition: width 0.6s, height 0.6s;
+        }
+
+        .btn:hover::before {
+            width: 300px;
+            height: 300px;
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            color: white;
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 30px rgba(99, 102, 241, 0.4);
+        }
+
+        .btn-secondary {
+            background: transparent;
+            border: 2px solid var(--primary);
+            color: var(--primary);
+        }
+
+        .btn-secondary:hover {
+            background: var(--primary);
+            color: white;
+            box-shadow: 0 10px 30px rgba(99, 102, 241, 0.3);
+        }
+
+        .hero-image {
+            position: relative;
+            animation: fadeInUp 1s 0.8s backwards;
+        }
+
+        .image-placeholder {
+            width: 100%;
+            aspect-ratio: 1;
+            background: linear-gradient(135deg, rgba(99, 102, 241, 0.1), rgba(139, 92, 246, 0.1));
+            border-radius: 20px;
+            border: 2px dashed rgba(99, 102, 241, 0.3);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2rem;
+            color: var(--gray);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .image-placeholder::before {
+            content: '';
+            position: absolute;
+            width: 200%;
+            height: 200%;
+            background: linear-gradient(45deg, transparent, rgba(34, 211, 238, 0.1), transparent);
+            animation: shimmer 3s infinite;
+        }
+
+        @keyframes shimmer {
+            0% { transform: translateX(-100%) translateY(-100%) rotate(45deg); }
+            100% { transform: translateX(100%) translateY(100%) rotate(45deg); }
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Section Styles */
+        section {
+            padding: 6rem 5%;
+            max-width: 1400px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 1;
+        }
+
+        .section-title {
+            font-size: 3rem;
+            margin-bottom: 3rem;
+            text-align: center;
+            background: linear-gradient(135deg, var(--primary), var(--quantum), var(--accent));
+            background-size: 200% 200%;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            animation: gradient-shift 8s ease infinite;
+        }
+
+        /* Experience Cards */
+        .experience-grid {
+            display: grid;
+            gap: 2rem;
+        }
+
+        .experience-card {
+            background: rgba(99, 102, 241, 0.05);
+            border: 1px solid rgba(99, 102, 241, 0.2);
+            border-radius: 16px;
+            padding: 2rem;
+            transition: all 0.4s;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .experience-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(34, 211, 238, 0.1), transparent);
+            transition: left 0.6s;
+        }
+
+        .experience-card:hover::before {
+            left: 100%;
+        }
+
+        .experience-card:hover {
+            transform: translateY(-5px) scale(1.01);
+            border-color: var(--quantum);
+            box-shadow: 0 10px 40px rgba(34, 211, 238, 0.2);
+        }
+
+        .experience-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: start;
+            margin-bottom: 1rem;
+        }
+
+        .experience-header h3 {
+            font-size: 1.5rem;
+            color: var(--light);
+        }
+
+        .experience-header .date {
+            color: var(--accent);
+            font-weight: 600;
+        }
+
+        .company {
+            color: var(--primary);
+            font-size: 1.1rem;
+            margin-bottom: 1rem;
+        }
+
+        .experience-card ul {
+            list-style: none;
+            padding-left: 0;
+        }
+
+        .experience-card li {
+            color: var(--gray);
+            margin-bottom: 0.5rem;
+            padding-left: 1.5rem;
+            position: relative;
+        }
+
+        .experience-card li::before {
+            content: '→';
+            position: absolute;
+            left: 0;
+            color: var(--quantum);
+        }
+
+        /* Projects Grid */
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2rem;
+        }
+
+        .project-card {
+            background: rgba(99, 102, 241, 0.05);
+            border: 1px solid rgba(99, 102, 241, 0.2);
+            border-radius: 16px;
+            overflow: hidden;
+            transition: all 0.4s;
+            position: relative;
+        }
+
+        .project-card::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(135deg, rgba(34, 211, 238, 0.1), rgba(99, 102, 241, 0.1));
+            opacity: 0;
+            transition: opacity 0.4s;
+            pointer-events: none;
+        }
+
+        .project-card:hover::after {
+            opacity: 1;
+        }
+
+        .project-card:hover {
+            transform: translateY(-10px) scale(1.02);
+            box-shadow: 0 20px 60px rgba(34, 211, 238, 0.3);
+            border-color: var(--quantum);
+        }
+
+        .project-image {
+            width: 100%;
+            height: 200px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .project-image img {
+            object-fit: cover;
+            width: 100%;
+            height: 100%;
+            display: block;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            transition: transform 0.4s;
+        }
+
+        .project-card:hover .project-image img {
+            transform: translate(-50%, -50%) scale(1.1);
+        }
+
+        .project-content {
+            padding: 2rem;
+            position: relative;
+            z-index: 1;
+        }
+
+        .project-content h3 {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            color: var(--light);
+        }
+
+        .project-content p {
+            color: var(--gray);
+            line-height: 1.6;
+            margin-bottom: 1rem;
+        }
+
+        .project-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+        }
+
+        .tag {
+            background: rgba(34, 211, 238, 0.2);
+            color: var(--quantum);
+            padding: 0.4rem 0.8rem;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            transition: all 0.3s;
+        }
+
+        .tag:hover {
+            background: rgba(34, 211, 238, 0.3);
+            transform: translateY(-2px);
+        }
+
+        /* Skills Section */
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+        }
+
+        .skill-category {
+            background: rgba(99, 102, 241, 0.05);
+            border: 1px solid rgba(99, 102, 241, 0.2);
+            border-radius: 16px;
+            padding: 2rem;
+            transition: all 0.4s;
+        }
+
+        .skill-category:hover {
+            transform: translateY(-5px);
+            border-color: var(--quantum);
+            box-shadow: 0 10px 30px rgba(34, 211, 238, 0.2);
+        }
+
+        .skill-category h3 {
+            color: var(--quantum);
+            margin-bottom: 1.5rem;
+            font-size: 1.3rem;
+        }
+
+        .skill-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.8rem;
+        }
+
+        .skill-item {
+            background: rgba(34, 211, 238, 0.1);
+            padding: 0.6rem 1rem;
+            border-radius: 8px;
+            color: var(--light);
+            font-size: 0.9rem;
+            transition: all 0.3s;
+        }
+
+        .skill-item:hover {
+            background: rgba(34, 211, 238, 0.2);
+            transform: translateY(-2px);
+        }
+
+        /* Contact Section */
+        .contact-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .contact-card {
+            background: rgba(99, 102, 241, 0.05);
+            border: 1px solid rgba(99, 102, 241, 0.2);
+            border-radius: 16px;
+            padding: 2rem;
+            text-align: center;
+            transition: all 0.4s;
+            text-decoration: none;
+            display: block;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .contact-card::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 0;
+            height: 0;
+            background: radial-gradient(circle, rgba(34, 211, 238, 0.2), transparent);
+            transform: translate(-50%, -50%);
+            transition: width 0.6s, height 0.6s;
+            border-radius: 50%;
+        }
+
+        .contact-card:hover::before {
+            width: 400px;
+            height: 400px;
+        }
+
+        .contact-card:hover {
+            transform: translateY(-5px);
+            border-color: var(--quantum);
+            box-shadow: 0 10px 40px rgba(34, 211, 238, 0.3);
+        }
+
+        .contact-icon {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            position: relative;
+            z-index: 1;
+        }
+
+        .contact-card h3 {
+            color: var(--light);
+            margin-bottom: 0.5rem;
+            position: relative;
+            z-index: 1;
+        }
+
+        .contact-card p {
+            color: var(--gray);
+            position: relative;
+            z-index: 1;
+        }
+
+        /* Footer */
+        footer {
+            text-align: center;
+            padding: 2rem;
+            color: var(--gray);
+            border-top: 1px solid rgba(99, 102, 241, 0.1);
+            position: relative;
+            z-index: 1;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .hero-content {
+                grid-template-columns: 1fr;
+                text-align: center;
+            }
+
+            .hero-text h1 {
+                font-size: 2.5rem;
+            }
+
+            .hero-buttons {
+                justify-content: center;
+            }
+
+            .nav-links {
+                gap: 1rem;
+            }
+
+            .section-title {
+                font-size: 2rem;
+            }
+
+            .projects-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* Scroll indicator */
+        .scroll-indicator {
+            position: absolute;
+            bottom: 2rem;
+            left: 50%;
+            transform: translateX(-50%);
+            animation: bounce 2s infinite;
+            opacity: 0.6;
+            z-index: 1;
+        }
+
+        @keyframes bounce {
+            0%, 20%, 50%, 80%, 100% { transform: translateX(-50%) translateY(0); }
+            40% { transform: translateX(-50%) translateY(-10px); }
+            60% { transform: translateX(-50%) translateY(-5px); }
+        }
+    </style>
+</head>
+<body>
+    <div class="bg-animation"></div>
+    
+    <div class="wave-container">
+        <div class="wave"></div>
+        <div class="wave"></div>
+        <div class="wave"></div>
+    </div>
+
+    <canvas id="quantumCanvas"></canvas>
+
+    <nav id="navbar">
+        <div class="nav-content">
+            <div class="logo">EMJ</div>
+            <ul class="nav-links">
+                <li><a href="#about">About</a></li>
+                <li><a href="#experience">Experience</a></li>
+                <li><a href="#projects">Projects</a></li>
+                <li><a href="#skills">Skills</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <section class="hero">
+        <div class="hero-content">
+            <div class="hero-text">
+                <h1>Edward (Teddy) Jones</h1>
+                <h2>Quantum Scientist & Full-Stack Developer</h2>
+                <p>Master's candidate in Quantum Science & Technology at UCLA, specializing in quantum computing, AI development, and orbital dynamics. Building the future at the intersection of quantum physics and software engineering.</p>
+                <div class="hero-buttons">
+                    <a href="#contact" class="btn btn-primary">Get In Touch</a>
+                    <a href="#projects" class="btn btn-secondary">View Projects</a>
+                </div>
+            </div>
+            <div class="hero-image">
+                <div class="image-placeholder">
+                    <span>Your Photo Here</span>
+                </div>
+            </div>
+        </div>
+        <div class="scroll-indicator">
+            <svg width="30" height="50" viewBox="0 0 30 50">
+                <rect x="0" y="0" width="30" height="50" rx="15" fill="none" stroke="rgba(34, 211, 238, 0.5)" stroke-width="2"/>
+                <circle cx="15" cy="15" r="5" fill="rgba(34, 211, 238, 0.5)">
+                    <animate attributeName="cy" from="15" to="35" dur="1.5s" repeatCount="indefinite"/>
+                    <animate attributeName="opacity" from="1" to="0" dur="1.5s" repeatCount="indefinite"/>
+                </circle>
+            </svg>
+        </div>
+    </section>
+
+    <section id="about">
+        <h2 class="section-title">About Me</h2>
+        <div style="max-width: 900px; margin: 0 auto; text-align: center;">
+            <p style="font-size: 1.2rem; line-height: 1.8; color: var(--gray); margin-bottom: 2rem;">
+                I'm a quantum science graduate student at UCLA with a passion for pushing the boundaries of computing and technology. With a background in applied physics and computer science, I've worked on everything from quantum algorithms to orbital dynamics at Northrop Grumman, and I'm the cofounder and CEO of Tune Social, a music social media platform.
+            </p>
+            <p style="font-size: 1.2rem; line-height: 1.8; color: var(--gray);">
+                My work spans quantum computing implementation, AI pipeline development, and front-end design. I hold a Top Secret DoD Security Clearance and have been recognized as a Magna Cum Laude graduate, Arrupe Scholar, and member of multiple honor societies.
+            </p>
+        </div>
+    </section>
+
+    <section id="experience">
+        <h2 class="section-title">Experience</h2>
+        <div class="experience-grid">
+            <div class="experience-card">
+                <div class="experience-header">
+                    <div>
+                        <h3>Orbital Dynamics Intern</h3>
+                        <div class="company">Northrop Grumman</div>
+                    </div>
+                    <span class="date">2024 - 2025</span>
+                </div>
+                <ul>
+                    <li>Modeled orbital trajectories using FreeFlyer and Ansys STK for satellite constellation management</li>
+                    <li>Improved astrodynamics software situational awareness reporting for LEO satellites</li>
+                    <li>Developed LEOPs and operational flight dynamics user interfaces</li>
+                    <li>Collaborated with SDA flight dynamics team in AGILE environment</li>
+                </ul>
+            </div>
+
+            <div class="experience-card">
+                <div class="experience-header">
+                    <div>
+                        <h3>CEO & Lead Project Manager</h3>
+                        <div class="company">Tune Social</div>
+                    </div>
+                    <span class="date">2023 - Present</span>
+                </div>
+                <ul>
+                    <li>Wireframed and developed front-end for all-in-one social music media platform</li>
+                    <li>Led marketing team of 7, building organic campaign reaching thousands of users</li>
+                    <li>Successfully deployed application to Apple App Store</li>
+                    <li>Developed expertise in UI/UX design with Figma, Uizard, React Native, and Flutter</li>
+                </ul>
+            </div>
+
+            <div class="experience-card">
+                <div class="experience-header">
+                    <div>
+                        <h3>Payload & Ground Systems SWSE Intern</h3>
+                        <div class="company">Northrop Grumman</div>
+                    </div>
+                    <span class="date">2023</span>
+                </div>
+                <ul>
+                    <li>Utilized DOORS, Atlassian Suite, TestComplete and TestExecute for systems engineering</li>
+                    <li>Managed requirements process ensuring clear, traceable, verifiable requirements</li>
+                    <li>Bridged communication gaps between diverse teams to meet project deadlines</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <section id="projects">
+        <h2 class="section-title">Featured Projects</h2>
+        <div class="projects-grid">
+            <div class="project-card">
+                <div class="project-image">
+                    <img src="QuantumBattleship.png" alt="Quantum Battleship">
+                </div>
+                <div class="project-content">
+                    <h3>Quantum Battleship</h3>
+                    <p>Developed a quantum version of Battleship using IBM's Qiskit for UCLA Fall Fest Hackathon. Led a team of MQST students, competed as a finalist presenting to a panel of judges.</p>
+                    <div class="project-tags">
+                        <span class="tag">Qiskit</span>
+                        <span class="tag">Python</span>
+                        <span class="tag">Quantum Computing</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="project-card">
+                <div class="project-image">
+                    <img src="aiContentGeneration.png" alt="AI Content Generation">
+                </div>
+                <div class="project-content">
+                    <h3>AI Content Pipeline</h3>
+                    <p>Designed and trained an AI pipeline to generate authentic Reddit stories, captions, and voiceovers. Developed entirely locally with open-source software for an organic marketing campaign.</p>
+                    <div class="project-tags">
+                        <span class="tag">AI/ML</span>
+                        <span class="tag">Python</span>
+                        <span class="tag">NLP</span>
+                        <span class="tag">PyTorch</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="project-card">
+                <div class="project-image">
+                    <img src="enceladus.png" alt="Enceladus Ocean Research">
+                </div>
+                <div class="project-content">
+                    <h3>Enceladus Ocean Research</h3>
+                    <p>Undergraduate thesis project analyzing subsurface ocean convection on Saturn's moon Enceladus using particle image velocimetry and thermal sensors for NASA mission planning.</p>
+                    <div class="project-tags">
+                        <span class="tag">LabView</span>
+                        <span class="tag">MATLAB</span>
+                        <span class="tag">Research</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="project-card">
+                <div class="project-image">
+                    <img src="NMRSpinComputing.png" alt="NMR Quantum Computing">
+                </div>
+                <div class="project-content">
+                    <h3>NMR Quantum Computing</h3>
+                    <p>Implemented the Deutsch Jozsa algorithm, Grover's algorithm, and other quantum algorithms on an NMR spin qubit system, exploring quantum coherence, relaxation, and spin manipulation.</p>
+                    <div class="project-tags">
+                        <span class="tag">Quantum Algorithms</span>
+                        <span class="tag">NMR</span>
+                        <span class="tag">Physics</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="project-card">
+                <div class="project-image">
+                    <img src="BEST.jpg" alt="Tune Social Media App">
+                </div>
+                <div class="project-content">
+                    <h3>Social Music Media App</h3>
+                    <p>Won BEST Startup Bootcamp by developing a product, business plan, and pitch. Led the technical and financial planning, pitched to investors and business college deans.</p>
+                    <div class="project-tags">
+                        <span class="tag">Entrepreneurship</span>
+                        <span class="tag">Product Design</span>
+                        <span class="tag">Business</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="skills">
+        <h2 class="section-title">Skills & Technologies</h2>
+        <div class="skills-grid">
+            <div class="skill-category">
+                <h3>Quantum Computing</h3>
+                <div class="skill-list">
+                    <span class="skill-item">Qiskit</span>
+                    <span class="skill-item">QuTiP</span>
+                    <span class="skill-item">Quantum Algorithms</span>
+                    <span class="skill-item">NMR Spectroscopy</span>
+                    <span class="skill-item">Quantum Optics</span>
+                </div>
+            </div>
+
+            <div class="skill-category">
+                <h3>Programming</h3>
+                <div class="skill-list">
+                    <span class="skill-item">Python</span>
+                    <span class="skill-item">JavaScript</span>
+                    <span class="skill-item">MATLAB</span>
+                    <span class="skill-item">Dart</span>
+                    <span class="skill-item">React Native</span>
+                    <span class="skill-item">Flutter</span>
+                </div>
+            </div>
+
+            <div class="skill-category">
+                <h3>AI/ML Development</h3>
+                <div class="skill-list">
+                    <span class="skill-item">PyTorch</span>
+                    <span class="skill-item">Transformers</span>
+                    <span class="skill-item">NLP</span>
+                    <span class="skill-item">Ollama</span>
+                    <span class="skill-item">Jupyter</span>
+                </div>
+            </div>
+
+            <div class="skill-category">
+                <h3>Aerospace Engineering</h3>
+                <div class="skill-list">
+                    <span class="skill-item">FreeFlyer</span>
+                    <span class="skill-item">Ansys STK</span>
+                    <span class="skill-item">DOORS</span>
+                    <span class="skill-item">Atlassian Suite</span>
+                </div>
+            </div>
+
+            <div class="skill-category">
+                <h3>Design & Frontend</h3>
+                <div class="skill-list">
+                    <span class="skill-item">Figma</span>
+                    <span class="skill-item">Uizard</span>
+                    <span class="skill-item">Flutter</span>
+                    <span class="skill-item">React</span>
+                </div>
+            </div>
+
+            <div class="skill-category">
+                <h3>Other</h3>
+                <div class="skill-list">
+                    <span class="skill-item">LabView</span>
+                    <span class="skill-item">Wolfram Mathematica</span>
+                    <span class="skill-item">Git</span>
+                    <span class="skill-item">Linux/Windows VMs</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="contact">
+        <h2 class="section-title">Let's Connect</h2>
+        <div class="contact-grid">
+            <a href="mailto:teddyjones304@gmail.com" class="contact-card">
+                <div class="contact-icon">📧</div>
+                <h3>Email</h3>
+                <p>teddyjones304@gmail.com</p>
+            </a>
+            <a href="http://www.linkedin.com/in/edward-jones-a20056237" target="_blank" class="contact-card">
+                <div class="contact-icon">💼</div>
+                <h3>LinkedIn</h3>
+                <p>Connect with me</p>
+            </a>
+            <div class="contact-card">
+                <div class="contact-icon">📍</div>
+                <h3>Location</h3>
+                <p>Los Angeles, CA</p>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <p>&copy; 2025 Edward (Teddy) Jones. All rights reserved.</p>
+    </footer>
+
+    <script>
+        // Quantum Particle Network Effect
+        const canvas = document.getElementById('quantumCanvas');
+        const ctx = canvas.getContext('2d');
+        
+        canvas.width = window.innerWidth;
+        canvas.height = window.innerHeight;
+
+        window.addEventListener('resize', () => {
+            canvas.width = window.innerWidth;
+            canvas.height = window.innerHeight;
+        });
+
+        class Particle {
+            constructor() {
+                this.reset();
+                this.y = Math.random() * canvas.height;
+                this.vx = (Math.random() - 0.5) * 0.5;
+                this.vy = (Math.random() - 0.5) * 0.5;
+            }
+
+            reset() {
+                this.x = Math.random() * canvas.width;
+                this.y = Math.random() * canvas.height;
+                this.vx = (Math.random() - 0.5) * 0.5;
+                this.vy = (Math.random() - 0.5) * 0.5;
+                this.radius = Math.random() * 2 + 1;
+                this.opacity = Math.random() * 0.5 + 0.2;
+                
+                // Quantum color states
+                const colors = ['#6366f1', '#22d3ee', '#8b5cf6', '#ec4899'];
+                this.color = colors[Math.floor(Math.random() * colors.length)];
+            }
+
+            update() {
+                this.x += this.vx;
+                this.y += this.vy;
+
+                // Wrap around edges
+                if (this.x < 0) this.x = canvas.width;
+                if (this.x > canvas.width) this.x = 0;
+                if (this.y < 0) this.y = canvas.height;
+                if (this.y > canvas.height) this.y = 0;
+
+                // Quantum fluctuation
+                this.opacity += (Math.random() - 0.5) * 0.02;
+                this.opacity = Math.max(0.1, Math.min(0.7, this.opacity));
+            }
+
+            draw() {
+                ctx.beginPath();
+                ctx.arc(this.x, this.y, this.radius, 0, Math.PI * 2);
+                ctx.fillStyle = this.color;
+                ctx.globalAlpha = this.opacity;
+                ctx.fill();
+                
+                // Glow effect
+                ctx.shadowBlur = 10;
+                ctx.shadowColor = this.color;
+                ctx.fill();
+                ctx.shadowBlur = 0;
+            }
+        }
+
+        const particles = [];
+        const particleCount = 80;
+
+        for (let i = 0; i < particleCount; i++) {
+            particles.push(new Particle());
+        }
+
+        function drawConnections() {
+            for (let i = 0; i < particles.length; i++) {
+                for (let j = i + 1; j < particles.length; j++) {
+                    const dx = particles[i].x - particles[j].x;
+                    const dy = particles[i].y - particles[j].y;
+                    const distance = Math.sqrt(dx * dx + dy * dy);
+
+                    if (distance < 150) {
+                        ctx.beginPath();
+                        ctx.strokeStyle = '#22d3ee';
+                        ctx.globalAlpha = (1 - distance / 150) * 0.3;
+                        ctx.lineWidth = 0.5;
+                        ctx.moveTo(particles[i].x, particles[i].y);
+                        ctx.lineTo(particles[j].x, particles[j].y);
+                        ctx.stroke();
+                    }
+                }
+            }
+        }
+
+        function animate() {
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            
+            drawConnections();
+            
+            particles.forEach(particle => {
+                particle.update();
+                particle.draw();
+            });
+
+            ctx.globalAlpha = 1;
+            requestAnimationFrame(animate);
+        }
+
+        animate();
+
+        // Mouse interaction - quantum entanglement effect
+        let mouse = { x: null, y: null, radius: 150 };
+
+        canvas.addEventListener('mousemove', (e) => {
+            mouse.x = e.x;
+            mouse.y = e.y;
+            
+            particles.forEach(particle => {
+                const dx = mouse.x - particle.x;
+                const dy = mouse.y - particle.y;
+                const distance = Math.sqrt(dx * dx + dy * dy);
+                
+                if (distance < mouse.radius) {
+                    const force = (mouse.radius - distance) / mouse.radius;
+                    const angle = Math.atan2(dy, dx);
+                    particle.vx -= Math.cos(angle) * force * 0.1;
+                    particle.vy -= Math.sin(angle) * force * 0.1;
+                }
+            });
+        });
+
+        canvas.addEventListener('mouseleave', () => {
+            mouse.x = null;
+            mouse.y = null;
+        });
+
+        // Smooth scrolling
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Navbar scroll effect
+        const navbar = document.getElementById('navbar');
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 50) {
+                navbar.classList.add('scrolled');
+            } else {
+                navbar.classList.remove('scrolled');
+            }
+        });
+
+        // Intersection Observer for scroll animations
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -100px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.experience-card, .project-card, .skill-category, .contact-card').forEach(el => {
+            el.style.opacity = '0';
+            el.style.transform = 'translateY(20px)';
+            el.style.transition = 'all 0.6s ease-out';
+            observer.observe(el);
+        });
+
+        // Parallax effect for hero section
+        window.addEventListener('scroll', () => {
+            const scrolled = window.pageYOffset;
+            const heroImage = document.querySelector('.hero-image');
+            if (heroImage) {
+                heroImage.style.transform = `translateY(${scrolled * 0.3}px)`;
+            }
+        });
+    </script>
+</body>
+</html>
