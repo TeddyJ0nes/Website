@@ -12,14 +12,13 @@
         }
 
         :root {
-            --primary: #6366f1;
-            --secondary: #8b5cf6;
-            --accent: #ec4899;
-            --quantum: #22d3ee;
+            --primary: #8b5cf6;
             --dark: #0f172a;
-            --darker: #020617;
-            --light: #f8fafc;
+            --darker: #0a0a0f;
+            --light: #f1f5f9;
             --gray: #64748b;
+            --muted: rgba(255, 255, 255, 0.03);
+            --border: rgba(139, 92, 246, 0.16);
         }
 
         body {
@@ -37,7 +36,7 @@
             width: 100%;
             height: 100%;
             z-index: -1;
-            background: linear-gradient(135deg, var(--darker) 0%, var(--dark) 100%);
+            background: var(--darker);
         }
 
         /* Canvas for quantum effects */
@@ -79,14 +78,14 @@
         }
 
         .wave:nth-child(2) {
-            background: radial-gradient(circle, var(--quantum), transparent 70%);
+            background: radial-gradient(circle, var(--primary), transparent 70%);
             animation-delay: 5s;
             top: -50%;
             right: -50%;
         }
 
         .wave:nth-child(3) {
-            background: radial-gradient(circle, var(--accent), transparent 70%);
+            background: radial-gradient(circle, var(--primary), transparent 70%);
             animation-delay: 10s;
             bottom: -50%;
             left: 0;
@@ -112,7 +111,7 @@
             background: rgba(15, 23, 42, 0.8);
             backdrop-filter: blur(10px);
             z-index: 1000;
-            border-bottom: 1px solid rgba(99, 102, 241, 0.1);
+            border-bottom: 1px solid var(--border);
             transition: all 0.3s;
         }
 
@@ -132,9 +131,7 @@
         .logo {
             font-size: 1.5rem;
             font-weight: 700;
-            background: linear-gradient(135deg, var(--primary), var(--accent));
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
+            color: var(--primary);
             position: relative;
         }
 
@@ -159,7 +156,7 @@
             left: 0;
             width: 0;
             height: 2px;
-            background: linear-gradient(90deg, var(--primary), var(--quantum));
+            background: var(--primary);
             transition: width 0.3s;
         }
 
@@ -194,11 +191,8 @@
         .hero-text h1 {
             font-size: 4rem;
             margin-bottom: 1rem;
-            background: linear-gradient(135deg, var(--primary), var(--quantum), var(--accent));
-            background-size: 200% 200%;
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            animation: fadeInUp 1s, gradient-shift 8s ease infinite;
+            color: var(--light);
+            animation: fadeInUp 1s;
             position: relative;
         }
 
@@ -261,13 +255,13 @@
         }
 
         .btn-primary {
-            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            background: var(--primary);
             color: white;
         }
 
         .btn-primary:hover {
             transform: translateY(-2px);
-            box-shadow: 0 10px 30px rgba(99, 102, 241, 0.4);
+            box-shadow: 0 8px 20px rgba(139, 92, 246, 0.25);
         }
 
         .btn-secondary {
@@ -279,7 +273,7 @@
         .btn-secondary:hover {
             background: var(--primary);
             color: white;
-            box-shadow: 0 10px 30px rgba(99, 102, 241, 0.3);
+            box-shadow: 0 8px 20px rgba(139, 92, 246, 0.2);
         }
 
         .hero-image {
@@ -290,9 +284,9 @@
         .image-placeholder {
             width: 100%;
             aspect-ratio: 1;
-            background: linear-gradient(135deg, rgba(99, 102, 241, 0.1), rgba(139, 92, 246, 0.1));
+            background: rgba(139, 92, 246, 0.04);
             border-radius: 20px;
-            border: 2px dashed rgba(99, 102, 241, 0.3);
+            border: 2px dashed rgba(139, 92, 246, 0.2);
             display: flex;
             align-items: center;
             justify-content: center;
@@ -307,7 +301,7 @@
             position: absolute;
             width: 200%;
             height: 200%;
-            background: linear-gradient(45deg, transparent, rgba(34, 211, 238, 0.1), transparent);
+            background: linear-gradient(45deg, transparent, rgba(139, 92, 246, 0.08), transparent);
             animation: shimmer 3s infinite;
         }
 
@@ -340,11 +334,7 @@
             font-size: 3rem;
             margin-bottom: 3rem;
             text-align: center;
-            background: linear-gradient(135deg, var(--primary), var(--quantum), var(--accent));
-            background-size: 200% 200%;
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            animation: gradient-shift 8s ease infinite;
+            color: var(--primary);
         }
 
         /* Experience Cards */
@@ -354,8 +344,8 @@
         }
 
         .experience-card {
-            background: rgba(99, 102, 241, 0.05);
-            border: 1px solid rgba(99, 102, 241, 0.2);
+            background: var(--muted);
+            border: 1px solid var(--border);
             border-radius: 16px;
             padding: 2rem;
             transition: all 0.4s;
@@ -370,7 +360,7 @@
             left: -100%;
             width: 100%;
             height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(34, 211, 238, 0.1), transparent);
+            background: linear-gradient(90deg, transparent, rgba(139, 92, 246, 0.07), transparent);
             transition: left 0.6s;
         }
 
@@ -380,8 +370,8 @@
 
         .experience-card:hover {
             transform: translateY(-5px) scale(1.01);
-            border-color: var(--quantum);
-            box-shadow: 0 10px 40px rgba(34, 211, 238, 0.2);
+            border-color: var(--primary);
+            box-shadow: 0 8px 25px rgba(139, 92, 246, 0.12);
         }
 
         .experience-header {
@@ -397,7 +387,7 @@
         }
 
         .experience-header .date {
-            color: var(--accent);
+            color: var(--primary);
             font-weight: 600;
         }
 
@@ -423,7 +413,7 @@
             content: '→';
             position: absolute;
             left: 0;
-            color: var(--quantum);
+            color: var(--primary);
         }
 
         /* Projects Grid */
@@ -434,8 +424,8 @@
         }
 
         .project-card {
-            background: rgba(99, 102, 241, 0.05);
-            border: 1px solid rgba(99, 102, 241, 0.2);
+            background: var(--muted);
+            border: 1px solid var(--border);
             border-radius: 16px;
             overflow: hidden;
             transition: all 0.4s;
@@ -449,7 +439,7 @@
             left: 0;
             right: 0;
             bottom: 0;
-            background: linear-gradient(135deg, rgba(34, 211, 238, 0.1), rgba(99, 102, 241, 0.1));
+            background: rgba(139, 92, 246, 0.06);
             opacity: 0;
             transition: opacity 0.4s;
             pointer-events: none;
@@ -460,9 +450,9 @@
         }
 
         .project-card:hover {
-            transform: translateY(-10px) scale(1.02);
-            box-shadow: 0 20px 60px rgba(34, 211, 238, 0.3);
-            border-color: var(--quantum);
+            transform: translateY(-8px) scale(1.01);
+            box-shadow: 0 12px 35px rgba(139, 92, 246, 0.14);
+            border-color: var(--primary);
         }
 
         .project-image {
@@ -513,8 +503,9 @@
         }
 
         .tag {
-            background: rgba(34, 211, 238, 0.2);
-            color: var(--quantum);
+            background: rgba(13, 0, 20, 0.8);
+            color: var(--primary);
+            border: 1px solid rgba(139, 92, 246, 0.45);
             padding: 0.4rem 0.8rem;
             border-radius: 20px;
             font-size: 0.85rem;
@@ -523,7 +514,8 @@
         }
 
         .tag:hover {
-            background: rgba(34, 211, 238, 0.3);
+            background: rgba(139, 92, 246, 0.12);
+            border-color: var(--primary);
             transform: translateY(-2px);
         }
 
@@ -535,8 +527,8 @@
         }
 
         .skill-category {
-            background: rgba(99, 102, 241, 0.05);
-            border: 1px solid rgba(99, 102, 241, 0.2);
+            background: var(--muted);
+            border: 1px solid var(--border);
             border-radius: 16px;
             padding: 2rem;
             transition: all 0.4s;
@@ -544,12 +536,12 @@
 
         .skill-category:hover {
             transform: translateY(-5px);
-            border-color: var(--quantum);
-            box-shadow: 0 10px 30px rgba(34, 211, 238, 0.2);
+            border-color: var(--primary);
+            box-shadow: 0 8px 20px rgba(139, 92, 246, 0.12);
         }
 
         .skill-category h3 {
-            color: var(--quantum);
+            color: var(--primary);
             margin-bottom: 1.5rem;
             font-size: 1.3rem;
         }
@@ -561,7 +553,7 @@
         }
 
         .skill-item {
-            background: rgba(34, 211, 238, 0.1);
+            background: rgba(139, 92, 246, 0.1);
             padding: 0.6rem 1rem;
             border-radius: 8px;
             color: var(--light);
@@ -570,7 +562,7 @@
         }
 
         .skill-item:hover {
-            background: rgba(34, 211, 238, 0.2);
+            background: rgba(139, 92, 246, 0.18);
             transform: translateY(-2px);
         }
 
@@ -583,8 +575,8 @@
         }
 
         .contact-card {
-            background: rgba(99, 102, 241, 0.05);
-            border: 1px solid rgba(99, 102, 241, 0.2);
+            background: var(--muted);
+            border: 1px solid var(--border);
             border-radius: 16px;
             padding: 2rem;
             text-align: center;
@@ -602,7 +594,7 @@
             left: 50%;
             width: 0;
             height: 0;
-            background: radial-gradient(circle, rgba(34, 211, 238, 0.2), transparent);
+            background: radial-gradient(circle, rgba(139, 92, 246, 0.1), transparent);
             transform: translate(-50%, -50%);
             transition: width 0.6s, height 0.6s;
             border-radius: 50%;
@@ -615,8 +607,8 @@
 
         .contact-card:hover {
             transform: translateY(-5px);
-            border-color: var(--quantum);
-            box-shadow: 0 10px 40px rgba(34, 211, 238, 0.3);
+            border-color: var(--primary);
+            box-shadow: 0 8px 25px rgba(139, 92, 246, 0.14);
         }
 
         .contact-icon {
@@ -644,7 +636,7 @@
             text-align: center;
             padding: 2rem;
             color: var(--gray);
-            border-top: 1px solid rgba(99, 102, 241, 0.1);
+            border-top: 1px solid var(--border);
             position: relative;
             z-index: 1;
         }
@@ -738,8 +730,8 @@
         </div>
         <div class="scroll-indicator">
             <svg width="30" height="50" viewBox="0 0 30 50">
-                <rect x="0" y="0" width="30" height="50" rx="15" fill="none" stroke="rgba(34, 211, 238, 0.5)" stroke-width="2"/>
-                <circle cx="15" cy="15" r="5" fill="rgba(34, 211, 238, 0.5)">
+                <rect x="0" y="0" width="30" height="50" rx="15" fill="none" stroke="rgba(139, 92, 246, 0.4)" stroke-width="2"/>
+                <circle cx="15" cy="15" r="5" fill="rgba(139, 92, 246, 0.4)">
                     <animate attributeName="cy" from="15" to="35" dur="1.5s" repeatCount="indefinite"/>
                     <animate attributeName="opacity" from="1" to="0" dur="1.5s" repeatCount="indefinite"/>
                 </circle>
